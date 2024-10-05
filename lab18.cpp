@@ -23,8 +23,16 @@ void addToTail(Node *&, Review); //Add a node to the end of a list
 bool getReview(Node*&, int); //Gets a review, returns true if the user wants to enter another review
 
 int main(){
+	Node * head = nullptr;
+	int mode;
 
+	cout << "Which linked list method should we use?\n"
+	     << "\t[1] New nodes are added at the head of the linked list\n"
+		 << "\t[2] New nodes are added at the tail of the linked list\n"
+		 << "Choice: ";
+	cin >> mode;
 
+	while (getReview(head, mode));
 
 	return 0;
 }
@@ -59,8 +67,24 @@ void addToTail(Node *&hd, Review v) {
 }
 
 bool getReview(Node *&hd, int mode) {
+	//get the review
 	Review temp;
-	cout
-
-
+	cout << "Enter review rating 0-5: ";
+	cin >> temp.rating;
+	cin.ignore();
+	cout << "Enter review comments: ";
+	getline(cin, temp.comment);
+	//add the review to the list
+	if (mode==1)
+		addToHead(hd, temp);
+	else
+		addToTail(hd, temp);
+	//new review or not
+	char inp;
+	cout << "Enter another review? y/n: ";
+	cin >> inp;
+	if (inp=='y')
+		return true;
+	else
+		return false;
 }
