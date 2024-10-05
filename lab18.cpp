@@ -39,6 +39,8 @@ int main(){
 	cout << "Outputting all reviews:\n";
 	dispList(head);
 
+	cout << "\tAverage: " << calcAvg(head);
+
 	return 0;
 }
 
